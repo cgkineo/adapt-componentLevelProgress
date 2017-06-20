@@ -1,0 +1,70 @@
+.component-completion {
+    display: inline-block;
+    position: relative;
+    height: 1em;
+    width: 1em;
+    border: 3px solid;
+    border-color: @title-color;
+    border-radius: 50%;
+    vertical-align: top;
+    background: transparent;
+
+    &:after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        color: white;
+        font-family: vanilla;
+        font-size: 0.8em;
+    }
+
+    &.question-component.show-feedback {
+
+        &.correct {
+            border-color: @validation-success;
+            background: @validation-success;
+
+            &:after {
+                content: "\e633";
+            }
+
+        }
+
+        &.incorrect {
+            border-color: @validation-error;
+            background: @validation-error;
+
+            &:after {
+                content: "\e634";
+            }
+
+        }
+
+    }
+
+    &.question-component.no-feedback,
+    &.presentation-component {
+
+        &.complete {
+            background: @title-color;
+
+            &:after {
+                content: "\e636";
+            }
+
+        }
+
+    }
+
+    &.complete,
+    &.correct,
+    &.incorrect {
+        box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+    
+}
+
+.component-title-text {
+    display: inline;
+}

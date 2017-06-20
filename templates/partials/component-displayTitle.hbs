@@ -1,0 +1,17 @@
+{{#if displayTitle}}
+<div class="{{_component}}-title component-title">
+	{{#if _showComponentCompletion}}
+	    <div role="heading" tab-index="0" class="{{_component}}-title-inner component-title-inner" aria-label="{{#if _isComplete}}{{{a11y_normalize (compile displayTitle this)}}} {{_globals._accessibility._ariaLabels.complete}} {{#if _isQuestionType}}{{#if _canShowFeedback}}{{#if _isCorrect}}{{_globals._accessibility._ariaLabels.correct}}{{else}}{{_globals._accessibility._ariaLabels.incorrect}}{{/if}}{{/if}}{{/if}}{{else}}{{a11y_normalize (compile displayTitle this)}} {{_globals._accessibility._ariaLabels.incomplete}}{{/if}}" aria-label="4">
+	    	<div class="component-completion {{#if _isQuestionType}}question-component {{#if _canShowFeedback}}show-feedback{{else}}no-feedback{{/if}}{{else}}presentation-component{{/if}} {{#if _isComplete}}{{#if _isQuestionType}}{{#if _canShowFeedback}}{{#if _isCorrect}}correct{{else}}incorrect{{/if}}{{else}}complete{{/if}}{{else}}complete{{/if}}{{else}}incomplete{{/if}}"></div>
+	    	<div class="component-title-text">
+	        {{{compile displayTitle this}}}
+	        </div>
+	    </div>
+    {{else}}
+	    <div role="heading" tabindex="0" class="{{_component}}-title-inner component-title-inner" aria-level="4">
+            {{{compile displayTitle this}}}
+        </div>
+    {{/if}}
+
+</div>
+{{/if}}
