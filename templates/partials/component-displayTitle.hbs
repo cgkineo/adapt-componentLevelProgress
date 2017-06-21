@@ -14,4 +14,10 @@
     {{/if}}
 
 </div>
+{{else if _showComponentCompletion}}
+<div class="{{_component}}-title component-title">
+    <div role="heading" tab-index="0" class="{{_component}}-title-inner component-title-inner" aria-label="{{#if _isComplete}}{{{a11y_normalize (compile title this)}}} {{_globals._accessibility._ariaLabels.complete}} {{#if _isQuestionType}}{{#if _canShowFeedback}}{{#if _isCorrect}}{{_globals._accessibility._ariaLabels.correct}}{{else}}{{_globals._accessibility._ariaLabels.incorrect}}{{/if}}{{/if}}{{/if}}{{else}}{{a11y_normalize (compile title this)}} {{_globals._accessibility._ariaLabels.incomplete}}{{/if}}" aria-label="4">
+    	<div class="component-completion {{#if _isQuestionType}}question-component {{#if _canShowFeedback}}show-feedback{{else}}no-feedback{{/if}}{{else}}presentation-component{{/if}} {{#if _isComplete}}{{#if _isQuestionType}}{{#if _canShowFeedback}}{{#if _isCorrect}}correct{{else}}incorrect{{/if}}{{else}}complete{{/if}}{{else}}complete{{/if}}{{else}}incomplete{{/if}}"></div>
+    </div>
+</div>
 {{/if}}

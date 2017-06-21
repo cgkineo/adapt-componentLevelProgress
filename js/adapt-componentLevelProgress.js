@@ -43,17 +43,25 @@ define([
 
             var hasDisplayTitle = model.get("displayTitle");
             var isOptional = model.get("_isOptional");
-            var plpConfiguration = model.get("_pageLevelProgress");
-            var clpConfiguration = model.get("_componentLevelProgress");
+            //var modelPlpConfiguration = model.get("_pageLevelProgress");
+            var modelClpConfiguration = model.get("_componentLevelProgress");
             var noState = _.contains(model.get("_classes").split(" "), "no-state");
+            //var coursePlpConfiguration = Adapt.course.get("_pageLevelProgress");
+            var courseClpConfiguration = Adapt.course.get("_componentLevelProgress");
 
             var isShown = true;
 
-            if (clpConfiguration && !clpConfiguration._isEnabled) isShown = true;
-            if (plpConfiguration && !plpConfiguration._isEnabled) isShown = false;
+            //if (!modelPlpConfiguration || !modelPlpConfiguration._isEnabled) isShown = false;
             if (!hasDisplayTitle) isShown = false;
             if (isOptional) isShown = false;
             if (noState) isShown = false;
+
+            //if (modelPlpConfiguration && modelPlpConfiguration._isEnabled) isShown = true;
+            if (modelClpConfiguration && modelClpConfiguration._isEnabled) isShown = true;
+            if (modelClpConfiguration && modelClpConfiguration._isEnabled === false) isShown = false;
+
+            //if (coursePlpConfiguration && coursePlpConfiguration._isEnabled === false) isShown = false;
+            if (courseClpConfiguration && courseClpConfiguration._isEnabled === false) isShown = false;
 
             model.set("_showComponentCompletion", isShown);
 
