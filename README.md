@@ -1,30 +1,8 @@
-# adapt-contrib-pageLevelProgress  
+# adapt-componentLevelProgress  
 
-**Page Level Progress** is an *extension* bundled with the [Adapt framework](https://github.com/adaptlearning/adapt_framework).  
+<img src="https://github.com/cgkineo/adapt-componentLevelProgress/wiki/adapt-clp.gif.gif" alt="page level progress bar clicked and drawer opening, showing completion status of components">    
 
-<img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/plp01.gif" alt="page level progress bar clicked and drawer opening, showing completion status of components">    
-
-This extension displays the learner's progress through a page via a progress bar displayed in the top navigation bar. Progress is calculated as the percentage of child components that have been completed. Clicking on the progress bar opens the drawer to reveal completion status of individual components. Page progress may also be displayed on menu items representing the page.
-
-[Visit the **Page Level Progress** wiki](https://github.com/adaptlearning/adapt-contrib-pageLevelProgress/wiki) for more information about its functionality and for explanations of key properties.  
-
-##Installation
-
-As one of Adapt's *[core extensions](https://github.com/adaptlearning/adapt_framework/wiki/Core-Plug-ins-in-the-Adapt-Learning-Framework#extensions),* **Page Level Progress** is included with the [installation of the Adapt framework](https://github.com/adaptlearning/adapt_framework/wiki/Manual-installation-of-the-Adapt-framework#installation) and the [installation of the Adapt authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki/Installing-Adapt-Origin).
-
-* If **Page Level Progress** has been uninstalled from the Adapt framework, it may be reinstalled.
-With the [Adapt CLI](https://github.com/adaptlearning/adapt-cli) installed, run the following from the command line:  
-`adapt install adapt-contrib-pageLevelProgress`
-
-    Alternatively, this component can also be installed by adding the following line of code to the *adapt.json* file:  
-    `"adapt-contrib-pageLevelProgress": "*"`  
-    Then running the command:  
-    `adapt install`  
-    (This second method will reinstall all plug-ins listed in *adapt.json*.)  
-
-* If **Page Level Progress** has been uninstalled from the Adapt authoring tool, it may be reinstalled using the [Plug-in Manager](https://github.com/adaptlearning/adapt_authoring/wiki/Plugin-Manager).  
-
-<div float align=right><a href="#top">Back to Top</a></div>
+This extension displays the learner's progress through a page. 
 
 ## Settings Overview
 
@@ -58,9 +36,9 @@ Several elements of **Page Level Progress** have been assigned a label using the
 No known limitations.  
 
 ----------------------------
-**Version number:**  2.0.8   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a> 
+**Version number:**  2.0.0   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a> 
 **Framework versions:**  2.0     
-**Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-pageLevelProgress/graphs/contributors)    
+**Author / maintainer:** Kineo   
 **Accessibility support:** WAI AA   
 **RTL support:** yes  
 **Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge 12, IE 11, IE10, IE9, IE8, IE Mobile 11, Safari iOS 9+10, Safari OS X 9+10, Opera    
