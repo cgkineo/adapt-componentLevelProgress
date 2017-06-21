@@ -1,12 +1,12 @@
 .component-completion {
     display: inline-block;
     position: relative;
-    height: 1em;
-    width: 1em;
+    top: -0.08em;
+    height: 0.3em;
+    width: 0.3em;
     border: 3px solid;
     border-color: @title-color;
     border-radius: 50%;
-    vertical-align: top;
     background: transparent;
 
     &:after {
@@ -16,7 +16,7 @@
         transform: translate(-50%,-50%);
         color: white;
         font-family: vanilla;
-        font-size: 0.8em;
+        font-size: 0.5em;
     }
 
     &.question-component.show-feedback {
@@ -47,10 +47,10 @@
     &.presentation-component {
 
         &.complete {
-            background: @title-color;
+            background: lighten(@title-color, 5%);
 
             &:after {
-                content: "\e636";
+                content: "";
             }
 
         }
