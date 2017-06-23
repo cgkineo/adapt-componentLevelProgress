@@ -39,33 +39,57 @@ define([
 
         },
 
+        evaluate: function(model) {
+
+            if (this.evaluateShowComponentCompletion(model)) {
+                this.evaluateTitleAriaLabel();
+            }
+
+        },
+
         evaluateShowComponentCompletion: function(model) {
 
-            var hasDisplayTitle = model.get("displayTitle");
-            var isOptional = model.get("_isOptional");
-            //var modelPlpConfiguration = model.get("_pageLevelProgress");
-            var modelClpConfiguration = model.get("_componentLevelProgress");
-            var noState = _.contains(model.get("_classes").split(" "), "no-state");
-            //var coursePlpConfiguration = Adapt.course.get("_pageLevelProgress");
+            var json = model.toJSON();
+
+            var hasDisplayTitle = json.displayTitle;
+            var isOptional = json._isOptional;
+            var noState = _.contains(json._classes.split(" "), "no-state");
+
+            var modelClpConfiguration = json._componentLevelProgress;
             var courseClpConfiguration = Adapt.course.get("_componentLevelProgress");
 
             var isShown = true;
 
-            //if (!modelPlpConfiguration || !modelPlpConfiguration._isEnabled) isShown = false;
             if (!hasDisplayTitle) isShown = false;
             if (isOptional) isShown = false;
             if (noState) isShown = false;
 
-            //if (modelPlpConfiguration && modelPlpConfiguration._isEnabled) isShown = true;
             if (modelClpConfiguration && modelClpConfiguration._isEnabled) isShown = true;
             if (modelClpConfiguration && modelClpConfiguration._isEnabled === false) isShown = false;
 
-            //if (coursePlpConfiguration && coursePlpConfiguration._isEnabled === false) isShown = false;
             if (courseClpConfiguration && courseClpConfiguration._isEnabled === false) isShown = false;
 
             model.set("_showComponentCompletion", isShown);
 
             return isShown;
+
+        },
+
+        evaluateTitleAriaLabel: function(model) {
+
+            var json = model.toJSON();
+
+            var isComplete = json._isComplete;
+
+            var completeText = Adapt.course.get("_globals")._accessibility._ariaLabels.complete;
+            var incompleteText = Adapt.course.get("_globals")._accessibility._ariaLabels.incomplete;
+
+            var title = json.displayTitle;
+            var normalizedTitle = Handlebars.helpers.a11y_normalize(Handlebars.helpers.compile(title, json));
+
+            var titleAriaLabel = (isComplete ? completeText : incompleteText) + " " + normalizedTitle;
+
+            model.set("titleAriaLabel", titleAriaLabel);
 
         },
 
@@ -77,8 +101,10 @@ define([
 
             if (!view) return;
 
-            $state = $(Handlebars.partials['component-displayTitle'](model.toJSON()));
-            view.$(".component-title").replaceWith($state);
+            this.evaluateShowComponentCompletion(model);
+
+            view.$(".component-completion").removeClass("complete incomplete").addClass(model.get("_isComplete") ? "complete" : "incomplete");
+            view.$(".component-title-inner").attr("aria-label", model.get("titleAriaLabel"));
 
         },
 
