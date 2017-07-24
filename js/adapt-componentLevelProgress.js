@@ -23,7 +23,7 @@ define([
         componentViews: [],
         onComponentPreRender: function(view) {
 
-            if (!this.evaluateShowComponentCompletion(view.model)) return;
+            if (!this.evaluate(view.model)) return;
 
             this.componentViews.push(view);
 
@@ -41,9 +41,11 @@ define([
 
         evaluate: function(model) {
 
-            if (this.evaluateShowComponentCompletion(model)) {
-                this.evaluateTitleAriaLabel();
-            }
+            if (!this.evaluateShowComponentCompletion(model)) return;
+
+            this.evaluateTitleAriaLabel(model);
+
+            return true;
 
         },
 
@@ -101,7 +103,7 @@ define([
 
             if (!view) return;
 
-            this.evaluateShowComponentCompletion(model);
+            this.evaluate(model);
 
             view.$(".component-completion").removeClass("complete incomplete").addClass(model.get("_isComplete") ? "complete" : "incomplete");
             view.$(".component-title-inner").attr("aria-label", model.get("titleAriaLabel"));
