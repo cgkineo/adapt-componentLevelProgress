@@ -88,6 +88,7 @@ define([
 
             var type = model.get("_type");
             if (type === "course") type = "menu";
+            model.set("titleAriaType", type);
 
             var typeDefaults = {
                 menu: false,
@@ -97,7 +98,9 @@ define([
                 component: true
             };
             var showIndicator = typeDefaults[type];
+            if (modelClpConfiguration && modelClpConfiguration._showIndicator) showIndicator = true;
             if (modelClpConfiguration && modelClpConfiguration._showIndicator === false) showIndicator = false;
+
             model.set("titleShowIndicator", showIndicator);
 
             return isShown;
