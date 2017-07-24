@@ -1,4 +1,7 @@
-.component-completion {
+.page-completion,
+.article-completion,
+.block-completion,
+.component-completion, {
     display: inline-block;
     vertical-align: middle;
     overflow: hidden;
@@ -16,6 +19,7 @@
     &:after {
         position: absolute;
         top: 0;
+        left: 0;
         width: 0;
         height: 100%;
         content: " ";
@@ -33,6 +37,9 @@
     
 }
 
-.component-title-text {
+.page-title-inner,
+.article-title-inner,
+.block-title-inner,
+.component-title-inner {
     display: inline;
 }

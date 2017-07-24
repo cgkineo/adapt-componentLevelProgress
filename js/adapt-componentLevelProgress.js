@@ -6,16 +6,22 @@ define([
 
         initialize: function() {
 
+            var types = ['menu', 'page', 'article', 'block', 'component', ''];
+
             this.listenTo(Adapt, {
-                "componentView:preRender": this.onComponentPreRender,
-                "componentView:postRender": this.onComponentPostRender,
                 "remove": this.onRemove
             });
-            
+
+            this.listenTo(Adapt, types.join("View:preRender "), this.onComponentPreRender);
+            this.listenTo(Adapt, types.join("View:postRender "), this.onComponentPostRender);
+
         },
 
         onDataReady: function() {
 
+            Adapt.contentObjects.each(this.evaluateShowComponentCompletion);
+            Adapt.articles.each(this.evaluateShowComponentCompletion);
+            Adapt.blocks.each(this.evaluateShowComponentCompletion);
             Adapt.components.each(this.evaluateShowComponentCompletion);
 
         },
@@ -37,6 +43,12 @@ define([
                 "change:_isComplete": this.onComponentComplete
             }, this);
 
+            var type = view.model.get("_type");
+            if (type === "course") type = "menu";
+
+            view.$("."+type+"-title").prepend(Handlebars.templates.displayTitle(view.model.toJSON()));
+            view.$("."+type+"-title-inner").removeAttr("role").removeAttr("tabindex").removeAttr("aria-level").addClass("a11y-ignore").attr("aria-hidden", true);
+
         },
 
         evaluate: function(model) {
@@ -44,6 +56,7 @@ define([
             if (!this.evaluateShowComponentCompletion(model)) return;
 
             this.evaluateTitleAriaLabel(model);
+            this.evaluateTitleAriaLevel(model);
 
             return true;
 
@@ -73,6 +86,20 @@ define([
 
             model.set("_showComponentCompletion", isShown);
 
+            var type = model.get("_type");
+            if (type === "course") type = "menu";
+
+            var typeDefaults = {
+                menu: false,
+                page: false,
+                article: false,
+                block: false,
+                component: true
+            };
+            var showIndicator = typeDefaults[type];
+            if (modelClpConfiguration && modelClpConfiguration._showIndicator === false) showIndicator = false;
+            model.set("titleShowIndicator", showIndicator);
+
             return isShown;
 
         },
@@ -95,6 +122,28 @@ define([
 
         },
 
+        evaluateTitleAriaLevel: function(model) {
+
+            var json = model.toJSON();
+
+            var type = json._type;
+            if (type === "course") type = "menu";
+
+            var titleAriaLevel = (json._componentLevelProgress && json._componentLevelProgress._ariaLevel) || null;
+            if (titleAriaLevel === null) {
+                var levels = {
+                    page: 1,
+                    article: 2,
+                    block: 3,
+                    component: 4
+                };
+                titleAriaLevel = levels[type];
+            }
+
+            model.set("titleAriaLevel", titleAriaLevel);
+
+        },
+
         onComponentComplete: function(model, value) {
 
             var view = _.find(this.componentViews, function(item) {
@@ -105,8 +154,8 @@ define([
 
             this.evaluate(model);
 
-            view.$(".component-completion").removeClass("complete incomplete").addClass(model.get("_isComplete") ? "complete" : "incomplete");
-            view.$(".component-title-inner").attr("aria-label", model.get("titleAriaLabel"));
+            view.$("."+model.get("_type")+"-completion").removeClass("complete incomplete").addClass(model.get("_isComplete") ? "complete" : "incomplete");
+            view.$("."+model.get("_type")+"-aria-title").attr("aria-label", model.get("titleAriaLabel"));
 
         },
 
