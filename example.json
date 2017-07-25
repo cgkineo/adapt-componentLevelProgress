@@ -10,7 +10,7 @@
     }
 }
 
-// To go on a component
+// To go on a component/article/block/page/menu
 {
     "_id":"c-05",
     "_parentId":"b-05",
