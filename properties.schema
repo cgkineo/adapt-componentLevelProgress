@@ -28,7 +28,7 @@
                   "validators": [],
                   "help": "If set to 'false', Title Level Progress will be disabled on all components"
                 },
-                _ariaLevels": {
+                "_ariaLevels": {
                   "type":"object",
                   "required":false,
                   "legend": "Default aria levels",
@@ -74,6 +74,7 @@
                       "validators": ["number"]
                     }
                   }
+                }
               }
             }
           }
