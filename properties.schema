@@ -110,7 +110,7 @@
                   "required": false,
                   "title": "Aria level",
                   "inputType": "Number",
-                  "default": 1,
+                  "default": 0,
                   "validators": ["number"]
                 }
               }
@@ -148,7 +148,7 @@
                   "required": false,
                   "title": "Aria level",
                   "inputType": "Number",
-                  "default": 2,
+                  "default": 0,
                   "validators": ["number"]
                 }
               }
@@ -186,7 +186,7 @@
                   "required": false,
                   "title": "Aria level",
                   "inputType": "Number",
-                  "default": 3,
+                  "default": 0,
                   "validators": ["number"]
                 }
               }
@@ -224,7 +224,7 @@
                   "required": true,
                   "title": "Aria level",
                   "inputType": "Number",
-                  "default": 4,
+                  "default": 0,
                   "validators": ["number"]
                 }
               }

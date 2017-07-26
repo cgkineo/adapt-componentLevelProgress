@@ -132,8 +132,8 @@ define([
             var type = json._type;
             if (type === "course") type = "menu";
 
-            var titleAriaLevel = (json._titleLevelProgress && json._titleLevelProgress._ariaLevel) || null;
-            if (titleAriaLevel === null) {
+            var titleAriaLevel = json._titleLevelProgress && json._titleLevelProgress._ariaLevel;
+            if (!titleAriaLevel) {
                 var levels;
                 var courseClpConfiguration = Adapt.course.get("_titleLevelProgress");
                 if (courseClpConfiguration && courseClpConfiguration._ariaLevels) {
