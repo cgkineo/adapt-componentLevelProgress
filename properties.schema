@@ -27,7 +27,53 @@
                   "inputType": {"type": "Boolean", "options": [true, false]},
                   "validators": [],
                   "help": "If set to 'false', Title Level Progress will be disabled on all components"
-                }
+                },
+                _ariaLevels": {
+                  "type":"object",
+                  "required":false,
+                  "legend": "Default aria levels",
+                  "properties":{
+                    "menu": {
+                      "type":"number",
+                      "required": false,
+                      "title": "Default menu title aria level",
+                      "inputType": "Number",
+                      "default": 1,
+                      "validators": ["number"]
+                    },
+                    "page": {
+                      "type":"number",
+                      "required": false,
+                      "title": "Default page title aria level",
+                      "inputType": "Number",
+                      "default": 1,
+                      "validators": ["number"]
+                    },
+                    "article": {
+                      "type":"number",
+                      "required": false,
+                      "title": "Default article title aria level",
+                      "inputType": "Number",
+                      "default": 2,
+                      "validators": ["number"]
+                    },
+                    "block": {
+                      "type":"number",
+                      "required": false,
+                      "title": "Default block title aria level",
+                      "inputType": "Number",
+                      "default": 3,
+                      "validators": ["number"]
+                    },
+                    "component": {
+                      "type":"number",
+                      "required": false,
+                      "title": "Default component title aria level",
+                      "inputType": "Number",
+                      "default": 4,
+                      "validators": ["number"]
+                    }
+                  }
               }
             }
           }

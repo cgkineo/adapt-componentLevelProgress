@@ -6,7 +6,7 @@ This extension displays the learner's progress through a page.
 
 ## Settings Overview
 
-The attributes listed below are used in *components.json* to configure **Title Level Progress**, and are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-contrib-pageLevelProgress/blob/master/example.json). 
+The attributes listed below are used in *components.json* to configure **Title Level Progress**, and are properly formatted as JSON in [*example.json*](https://github.com/cgkineo/adapt-titleLevelProgress/blob/master/example.json). 
 
 The absence of the **_titleLevelProgress** object in a component model is interpreted as that component having **Title Level Progress** enabled (`"_isEnabled": true`). 
 
@@ -16,6 +16,7 @@ The same **_titleLevelProgress** object may be added to the course (*course.json
 ### Attributes
 
 **_titleLevelProgress** (object):  The Title Level Progress object that contains a value for **_isEnabled**.  
+>**_ariaLevels** (object): Set default aria levels for content types. [*example.json*](https://github.com/cgkineo/adapt-titleLevelProgress/blob/master/example.json)  
 
 >**_isEnabled** (boolean): Turns title aria completion labels on/off`.  
 >**_showIndicator** (boolean): Turns the visual completion indicator on/off.  

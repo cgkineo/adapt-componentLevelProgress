@@ -134,12 +134,19 @@ define([
 
             var titleAriaLevel = (json._titleLevelProgress && json._titleLevelProgress._ariaLevel) || null;
             if (titleAriaLevel === null) {
-                var levels = {
-                    page: 1,
-                    article: 2,
-                    block: 3,
-                    component: 4
-                };
+                var levels;
+                var courseClpConfiguration = Adapt.course.get("_titleLevelProgress");
+                if (courseClpConfiguration && courseClpConfiguration._ariaLevels) {
+                    levels = courseClpConfiguration._ariaLevels;
+                } else {
+                    levels = {
+                        menu: 1,
+                        page: 1,
+                        article: 2,
+                        block: 3,
+                        component: 4
+                    };
+                }
                 titleAriaLevel = levels[type];
             }
 
