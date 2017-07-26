@@ -14,10 +14,10 @@
         "course": {
           "type":"object",
           "properties":{
-            "_componentLevelProgress": {
+            "_titleLevelProgress": {
               "type": "object",
               "required": false,
-              "legend": "Component Level Progress",
+              "legend": "Title Level Progress",
               "properties": {
                 "_isEnabled": {
                   "type": "boolean",
@@ -26,7 +26,7 @@
                   "title": "Is enabled",
                   "inputType": {"type": "Boolean", "options": [true, false]},
                   "validators": [],
-                  "help": "If set to 'false', Component Level Progress will be disabled on all components"
+                  "help": "If set to 'false', Title Level Progress will be disabled on all components"
                 }
               }
             }
@@ -35,10 +35,10 @@
         "contentobject": {
           "type":"object",
           "properties": {
-            "_componentLevelProgress": {
+            "_titleLevelProgress": {
               "type": "object",
               "required": false,
-              "legend": "Menu/Page Level Progress",
+              "legend": "Title Level Progress",
               "properties": {
                 "_isEnabled": {
                   "type": "boolean",
@@ -47,7 +47,24 @@
                   "title": "Is enabled",
                   "inputType": {"type": "Boolean", "options": [true, false]},
                   "validators": [],
-                  "help": "If set to 'true', add aria and indicator to menu / page titles"
+                  "help": "If set to 'true', add completion aria to title"
+                },
+                "_showIndicator": {
+                  "type": "boolean",
+                  "required":true,
+                  "default": true,
+                  "title": "Show indicator",
+                  "inputType": {"type": "Boolean", "options": [true, false]},
+                  "validators": [],
+                  "help": "If set to 'true', add indicator to title"
+                },
+                "_ariaLevel": {
+                  "type":"number",
+                  "required": false,
+                  "title": "Aria level",
+                  "inputType": "Number",
+                  "default": 1,
+                  "validators": ["number"]
                 }
               }
             }
@@ -56,19 +73,36 @@
         "article": {
           "type":"object",
           "properties": {
-            "_componentLevelProgress": {
+            "_titleLevelProgress": {
               "type": "object",
               "required": false,
-              "legend": "Article Level Progress",
+              "legend": "Title Level Progress",
               "properties": {
                 "_isEnabled": {
                   "type": "boolean",
-                  "required":true,
+                  "required": true,
                   "default": true,
                   "title": "Is enabled",
                   "inputType": {"type": "Boolean", "options": [true, false]},
                   "validators": [],
-                  "help": "If set to 'true', add aria and indicator to article titles"
+                  "help": "If set to 'true', add completion aria to title"
+                },
+                "_showIndicator": {
+                  "type": "boolean",
+                  "required": true,
+                  "default": false,
+                  "title": "Show indicator",
+                  "inputType": {"type": "Boolean", "options": [true, false]},
+                  "validators": [],
+                  "help": "If set to 'true', add indicator to title"
+                },
+                "_ariaLevel": {
+                  "type":"number",
+                  "required": false,
+                  "title": "Aria level",
+                  "inputType": "Number",
+                  "default": 2,
+                  "validators": ["number"]
                 }
               }
             }
@@ -77,19 +111,36 @@
         "block": {
           "type":"object",
           "properties": {
-            "_componentLevelProgress": {
+            "_titleLevelProgress": {
               "type": "object",
               "required": false,
-              "legend": "Block Level Progress",
+              "legend": "Title Level Progress",
               "properties": {
                 "_isEnabled": {
                   "type": "boolean",
-                  "required":true,
+                  "required": true,
                   "default": true,
                   "title": "Is enabled",
                   "inputType": {"type": "Boolean", "options": [true, false]},
                   "validators": [],
-                  "help": "If set to 'true', add aria and indicator to block titles"
+                  "help": "If set to 'true', add completion aria to title"
+                },
+                "_showIndicator": {
+                  "type": "boolean",
+                  "required": true,
+                  "default": false,
+                  "title": "Show indicator",
+                  "inputType": {"type": "Boolean", "options": [true, false]},
+                  "validators": [],
+                  "help": "If set to 'true', add indicator to title"
+                },
+                "_ariaLevel": {
+                  "type":"number",
+                  "required": false,
+                  "title": "Aria level",
+                  "inputType": "Number",
+                  "default": 3,
+                  "validators": ["number"]
                 }
               }
             }
@@ -101,16 +152,33 @@
             "_componentLevelProgress": {
               "type": "object",
               "required": false,
-              "legend": "Component Level Progress",
+              "legend": "Title Level Progress",
               "properties": {
                 "_isEnabled": {
                   "type": "boolean",
-                  "required":true,
+                  "required": true,
                   "default": true,
                   "title": "Is enabled",
                   "inputType": {"type": "Boolean", "options": [true, false]},
                   "validators": [],
-                  "help": "If set to 'true', add aria and indicator to component titles"
+                  "help": "If set to 'true', add completion aria to title"
+                },
+                "_showIndicator": {
+                  "type": "boolean",
+                  "required": true,
+                  "default": true,
+                  "title": "Show indicator",
+                  "inputType": {"type": "Boolean", "options": [true, false]},
+                  "validators": [],
+                  "help": "If set to 'true', add indicator to title"
+                },
+                "_ariaLevel": {
+                  "type":"number",
+                  "required": true,
+                  "title": "Aria level",
+                  "inputType": "Number",
+                  "default": 4,
+                  "validators": ["number"]
                 }
               }
             }

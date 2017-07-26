@@ -1,23 +1,25 @@
-# adapt-componentLevelProgress  
+# adapt-titleLevelProgress  
 
-<img src="https://github.com/cgkineo/adapt-componentLevelProgress/wiki/adapt-clp.gif.gif" alt="page level progress bar clicked and drawer opening, showing completion status of components">    
+<img src="https://github.com/cgkineo/adapt-titleLevelProgress/wiki/adapt-clp.gif.gif" alt="page level progress bar clicked and drawer opening, showing completion status of components">    
 
 This extension displays the learner's progress through a page. 
 
 ## Settings Overview
 
-The attributes listed below are used in *components.json* to configure **Component Level Progress**, and are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-contrib-pageLevelProgress/blob/master/example.json). 
+The attributes listed below are used in *components.json* to configure **Title Level Progress**, and are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-contrib-pageLevelProgress/blob/master/example.json). 
 
-The absence of the **_componentLevelProgress** object in a component model is interpreted as that component having **Component Level Progress** enabled (`"_isEnabled": true`). 
+The absence of the **_titleLevelProgress** object in a component model is interpreted as that component having **Title Level Progress** enabled (`"_isEnabled": true`). 
 
-The same **_componentLevelProgress** object may be added to the course (*course.json*). At this level, `"_isEnabled"` can be used to disable **Component Level Progress** on components and contentObjects that have `"_isEnabled": true`.  
->**Note:** Setting the **_componentLevelProgress** object in *course.json* does not provide defaults for components or contentObjects. It cannot be used to enable **Component Level Progress** on components or contentObjects that have `"_isEnabled": false` or that do not have the **_componentLevelProgress** object in their model json.
+The same **_titleLevelProgress** object may be added to the course (*course.json*). At this level, `"_isEnabled"` can be used to disable **Title Level Progress** on components and contentObjects that have `"_isEnabled": true`.  
+>**Note:** Setting the **_titleLevelProgress** object in *course.json* does not provide defaults for components or contentObjects. It cannot be used to enable **Title Level Progress** on components or contentObjects that have `"_isEnabled": false` or that do not have the **_titleLevelProgress** object in their model json.
 
 ### Attributes
 
-**_componentLevelProgress** (object):  The Component Level Progress object that contains a value for **_isEnabled**.  
+**_titleLevelProgress** (object):  The Title Level Progress object that contains a value for **_isEnabled**.  
 
->**_isEnabled** (boolean): Turns **Component Level Progress** on and off. Acceptable values are `true` and `false`. 
+>**_isEnabled** (boolean): Turns title aria completion labels on/off`. 
+>**_showIndicator** (boolean): Turns the visual completion indicator on/off. 
+>**_ariaLevel** (number): Adds a title aria level. 
   
 <div float align=right><a href="#top">Back to Top</a></div> 
 

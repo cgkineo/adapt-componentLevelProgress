@@ -2,7 +2,7 @@ define([
     'core/js/adapt'
 ], function(Adapt) {
 
-    var ComponentCompletion = Backbone.Controller.extend({
+    var TitleCompletion = Backbone.Controller.extend({
 
         initialize: function() {
 
@@ -12,35 +12,35 @@ define([
                 "remove": this.onRemove
             });
 
-            this.listenTo(Adapt, types.join("View:preRender "), this.onComponentPreRender);
-            this.listenTo(Adapt, types.join("View:postRender "), this.onComponentPostRender);
+            this.listenTo(Adapt, types.join("View:preRender "), this.onTitlePreRender);
+            this.listenTo(Adapt, types.join("View:postRender "), this.onTitlePostRender);
 
         },
 
         onDataReady: function() {
 
-            Adapt.contentObjects.each(this.evaluateShowComponentCompletion);
-            Adapt.articles.each(this.evaluateShowComponentCompletion);
-            Adapt.blocks.each(this.evaluateShowComponentCompletion);
-            Adapt.components.each(this.evaluateShowComponentCompletion);
+            Adapt.contentObjects.each(this.evaluateShowTitleCompletion);
+            Adapt.articles.each(this.evaluateShowTitleCompletion);
+            Adapt.blocks.each(this.evaluateShowTitleCompletion);
+            Adapt.components.each(this.evaluateShowTitleCompletion);
 
         },
 
-        componentViews: [],
-        onComponentPreRender: function(view) {
+        titleViews: [],
+        onTitlePreRender: function(view) {
 
             if (!this.evaluate(view.model)) return;
 
-            this.componentViews.push(view);
+            this.titleViews.push(view);
 
         },
 
-        onComponentPostRender: function(view) {
+        onTitlePostRender: function(view) {
             
-            if (!view.model.get("_showComponentCompletion")) return;
+            if (!view.model.get("_showTitleCompletion")) return;
 
             this.listenTo(view.model, {
-                "change:_isComplete": this.onComponentComplete
+                "change:_isComplete": this.onTitleComplete
             }, this);
 
             var type = view.model.get("_type");
@@ -53,7 +53,7 @@ define([
 
         evaluate: function(model) {
 
-            if (!this.evaluateShowComponentCompletion(model)) return;
+            if (!this.evaluateShowTitleCompletion(model)) return;
 
             this.evaluateTitleAriaLabel(model);
             this.evaluateTitleAriaLevel(model);
@@ -62,7 +62,7 @@ define([
 
         },
 
-        evaluateShowComponentCompletion: function(model) {
+        evaluateShowTitleCompletion: function(model) {
 
             var json = model.toJSON();
 
@@ -70,8 +70,8 @@ define([
             var isOptional = json._isOptional;
             var noState = _.contains(json._classes.split(" "), "no-state");
 
-            var modelClpConfiguration = json._componentLevelProgress;
-            var courseClpConfiguration = Adapt.course.get("_componentLevelProgress");
+            var modelClpConfiguration = json._titleLevelProgress;
+            var courseClpConfiguration = Adapt.course.get("_titleLevelProgress");
 
             var isShown = true;
 
@@ -84,7 +84,7 @@ define([
 
             if (courseClpConfiguration && courseClpConfiguration._isEnabled === false) isShown = false;
 
-            model.set("_showComponentCompletion", isShown);
+            model.set("_showTitleCompletion", isShown);
 
             var type = model.get("_type");
             if (type === "course") type = "menu";
@@ -132,7 +132,7 @@ define([
             var type = json._type;
             if (type === "course") type = "menu";
 
-            var titleAriaLevel = (json._componentLevelProgress && json._componentLevelProgress._ariaLevel) || null;
+            var titleAriaLevel = (json._titleLevelProgress && json._titleLevelProgress._ariaLevel) || null;
             if (titleAriaLevel === null) {
                 var levels = {
                     page: 1,
@@ -147,9 +147,9 @@ define([
 
         },
 
-        onComponentComplete: function(model, value) {
+        onTitleComplete: function(model, value) {
 
-            var view = _.find(this.componentViews, function(item) {
+            var view = _.find(this.titleViews, function(item) {
                 return item.model.cid === model.cid;
             });
 
@@ -164,16 +164,16 @@ define([
 
         onRemove: function() {
 
-            for (var i = 0, l = this.componentViews.length; i < l; i++) {
-                this.stopListening(this.componentViews[i]);
+            for (var i = 0, l = this.titleViews.length; i < l; i++) {
+                this.stopListening(this.titleViews[i]);
             }
 
-            this.componentViews.length = 0;
+            this.titleViews.length = 0;
 
         }
 
     });
 
-    return new ComponentCompletion();
+    return new TitleCompletion();
     
 });

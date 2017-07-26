@@ -1,16 +1,16 @@
 {
-    "name": "adapt-componentLevelProgress",
+    "name": "adapt-titleLevelProgress",
     "version": "2.0.8",
     "framework": "^2.0.0",
-    "homepage": "https://github.com/adaptlearning/adapt-contrib-componentLevelProgress",
-    "displayName": "Component Level Progress",
-    "extension": "componentLevelProgress",
-    "description": "An extension to show a user's progress through a page",
-    "main": "/js/adapt-componentLevelProgress.js",
+    "homepage": "https://github.com/cgkineo/adapt-titleLevelProgress",
+    "displayName": "Title Level Progress",
+    "extension": "titleLevelProgress",
+    "description": "An extension to show a user's progress through the course",
+    "main": "/js/adapt-titleLevelProgress.js",
     "keywords": [
         "adapt-plugin",
         "adapt-extension"
     ],
     "license": "GPLv3",
-    "targetAttribute": "_componentLevelProgress"
+    "targetAttribute": "_titleLevelProgress"
 }
