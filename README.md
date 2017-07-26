@@ -17,9 +17,9 @@ The same **_titleLevelProgress** object may be added to the course (*course.json
 
 **_titleLevelProgress** (object):  The Title Level Progress object that contains a value for **_isEnabled**.  
 
->**_isEnabled** (boolean): Turns title aria completion labels on/off`. 
->**_showIndicator** (boolean): Turns the visual completion indicator on/off. 
->**_ariaLevel** (number): Adds a title aria level. 
+>**_isEnabled** (boolean): Turns title aria completion labels on/off`.  
+>**_showIndicator** (boolean): Turns the visual completion indicator on/off.  
+>**_ariaLevel** (number): Adds a title aria level.  
   
 <div float align=right><a href="#top">Back to Top</a></div> 
 
