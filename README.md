@@ -8,10 +8,10 @@ This extension displays the learner's progress through a page.
 
 The attributes listed below are used in *components.json* to configure **Title Level Progress**, and are properly formatted as JSON in [*example.json*](https://github.com/cgkineo/adapt-titleLevelProgress/blob/master/example.json). 
 
-The absence of the **_titleLevelProgress** object in a component model is interpreted as that component having **Title Level Progress** enabled (`"_isEnabled": true`). 
+The absence of the **_titleLevelProgress** object in a component, article, block, page and menu model is interpreted as having **Title Level Progress** enabled (`"_isEnabled": true`). Blocks, articles, pages and menus with default to having (`"_showIndicator": false`), components will default to having (`"_showIndicator": true`). Aria levels will default to 1 for contentObjects, 2 for articles, 3 for blocks and 4 for components.
 
 The same **_titleLevelProgress** object may be added to the course (*course.json*). At this level, `"_isEnabled"` can be used to disable **Title Level Progress** on components and contentObjects that have `"_isEnabled": true`.  
->**Note:** Setting the **_titleLevelProgress** object in *course.json* does not provide defaults for components or contentObjects. It cannot be used to enable **Title Level Progress** on components or contentObjects that have `"_isEnabled": false` or that do not have the **_titleLevelProgress** object in their model json.
+>**Note:** Setting the **_titleLevelProgress** object in *course.json* does not provide defaults for components, blocks, articles or contentObjects. It cannot be used to enable **Title Level Progress** on components, blocks, articles or contentObjects that have `"_isEnabled": false` or that do not have the **_titleLevelProgress** object in their model json.
 
 ### Attributes
 
