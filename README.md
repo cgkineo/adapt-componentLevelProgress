@@ -15,12 +15,16 @@ The same **_titleLevelProgress** object may be added to the course (*course.json
 
 ### Attributes
 
+#### course
 **_titleLevelProgress** (object):  The Title Level Progress object that contains a value for **_isEnabled**.  
 >**_ariaLevels** (object): Set default aria levels for content types. [*example.json*](https://github.com/cgkineo/adapt-titleLevelProgress/blob/master/example.json)  
 
+#### menu/page/article/block/component
+**_titleLevelProgress** (object):  The Title Level Progress object that contains a value for **_isEnabled**.  
 >**_isEnabled** (boolean): Turns title aria completion labels on/off`.  
 >**_showIndicator** (boolean): Turns the visual completion indicator on/off.  
 >**_ariaLevel** (number): Adds a title aria level.  
+  
   
 <div float align=right><a href="#top">Back to Top</a></div> 
 
